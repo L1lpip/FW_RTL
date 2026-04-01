@@ -4,7 +4,7 @@ import axi_vip_pkg::*;
 import design_1_axi_vip_0_0_pkg::*;
 
 
-module fire_wall_tb;
+    module fire_wall_tb;
 
     bit                        [ 31:0] write_data;
     xil_axi_ulong                      mtestADDR;
@@ -73,20 +73,20 @@ module fire_wall_tb;
         mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hBBBBBBBB, mtestRresp);  //MAC_LO
         mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hBBBBBBB0, mtestRresp);  //MAC_HI
         
-        mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hCCCCCCCC, mtestRresp);  //MAC_LO
-        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hCCCCCCC0, mtestRresp);  //MAC_HI
+        mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hEEEEEEEE, mtestRresp);  //MAC_LO
+        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hEEEEEEE0, mtestRresp);  //MAC_HI
         
         mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hEEEEEEEE, mtestRresp);  //MAC_LO
-        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hEEEF1111, mtestRresp);  //MAC_HI
+        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hEEEFAAA1, mtestRresp);  //MAC_HI
 
-        mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hAAAAAAAA, mtestRresp);  //MAC_LO
-        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hAAAAAAA0, mtestRresp);  //MAC_HI
+        mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hFFFFFFFF, mtestRresp);  //MAC_LO
+        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hFFFFFFF0, mtestRresp);  //MAC_HI
 
-        mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hBBBBBBBB, mtestRresp);  //MAC_LO
-        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hBBBBBBB0, mtestRresp);  //MAC_HI
-        
+        mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hDDDDDDDD, mtestRresp);  //MAC_LO
+        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hDDDDDDD0, mtestRresp);  //MAC_HI
+
         mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hCCCCCCCC, mtestRresp);  //MAC_LO
-        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hCCCCCCC0, mtestRresp);  //MAC_HI
+        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hCCCCCCC1, mtestRresp);  //MAC_HI        
 
         mst_agent.stop_master();
     end
@@ -159,6 +159,7 @@ module fire_wall_tb;
     localparam [47:0] MY_MAC     = 48'h3210_2003_0000;  // must match DEST_ADDR
     localparam [47:0] SENDER_MAC = 48'hAABB_CCDD_EEFF;
     localparam [47:0] SENDER_MAC_1 = 48'hEEEE_EEEE_EEEF;
+    localparam [47:0] SENDER_MAC_2 = 48'hCCCC_CCCC_CCCC;
     localparam [15:0] ETYPE_IPV4 = 16'h0800;
 
     initial begin
@@ -182,6 +183,10 @@ module fire_wall_tb;
         
         $display("[TB] Sending MATCHING dst MAC frame (expect: PASS)");
         send_eth_packet(MY_MAC, SENDER_MAC_1, ETYPE_IPV4, pkt_payload_1, pkt_len);
+        repeat (5) @(posedge clk);
+
+        $display("[TB] Sending MATCHING dst MAC frame (expect: PASS)");
+        send_eth_packet(MY_MAC, SENDER_MAC_2, ETYPE_IPV4, pkt_payload_1, pkt_len);
         repeat (5) @(posedge clk);
 
         // --- Frame 2: dst MAC wrong → should be dropped ---

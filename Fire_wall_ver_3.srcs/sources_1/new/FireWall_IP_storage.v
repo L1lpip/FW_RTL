@@ -19,7 +19,7 @@ module FireWall_IP_storage #(
     input  wire        src_ip_valid,
     output reg         valid_IP,
     input  wire [47:0] src_ip,
-    output reg  [15:0] User_ID,
+    output reg  [14:0] User_ID,
 
     output wire full,
     output wire empty
@@ -70,40 +70,43 @@ module FireWall_IP_storage #(
     end
 
 
-   reg [PTR_WIDTH-1:0] search_idx;
+    reg [PTR_WIDTH-1:0] search_idx;
     reg                 searching;
+    reg                 src_ip_valid_r;
+    wire                src_ip_valid_rise = src_ip_valid & ~src_ip_valid_r;
 
     integer j;
     reg [63:0] entry;
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            valid_IP   <= 0;
-            User_ID    <= 0;
-            searching  <= 0;
-            search_idx <= 0;
+            valid_IP        <= 0;
+            User_ID         <= 0;
+            searching       <= 0;
+            search_idx      <= 0;
+            src_ip_valid_r  <= 0;
         end else begin
+            src_ip_valid_r <= src_ip_valid;
 
-
-            if (src_ip_valid && !searching) begin
+            if (src_ip_valid_rise) begin
                 searching  <= 1'b1;
                 search_idx <= 0;
                 valid_IP   <= 1'b0;
-            end
-            else if (searching) begin
-                valid_IP <= 1'b0; 
+            end else if (searching) begin
+                valid_IP <= 1'b0;
                 for (j = 0; j < 4; j = j + 1) begin
                     entry = mac_storage[search_idx][j*64 +: 64];
                     if ((entry[63:16] == src_ip) && entry[0]) begin
                         valid_IP  <= 1'b1;
-                        User_ID   <= {1'b0, entry[15:1]};
-                        searching <= 1'b0; 
+                        User_ID   <= entry[15:1];
+                        searching <= 1'b0;
                     end
                 end
                 if (searching) begin
-                    search_idx <= search_idx + 1;
                     if (search_idx == DEPTH-1) begin
-                        searching <= 1'b0; 
+                        searching <= 1'b0;
+                    end else begin
+                        search_idx <= search_idx + 1;
                     end
                 end
             end

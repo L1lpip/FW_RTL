@@ -1,7 +1,0 @@
-Time resolution is 1 ps
-XilinxAXIVIP: Found at Path: fire_wall_tb.UUT.design_1_i.axi_vip_0.inst
-[TB] Sending MATCHING dst MAC frame (expect: PASS)
-[TB] Sending MATCHING dst MAC frame (expect: PASS)
-[TB] Sending NON-MATCHING dst MAC frame (expect: DROP)
-[TB] Packet send test done.
-Executing Axi4 End Of Simulation checks

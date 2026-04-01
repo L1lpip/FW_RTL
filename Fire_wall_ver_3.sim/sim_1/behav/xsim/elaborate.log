@@ -6,24 +6,27 @@ Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 16 for port 'out_user_id_0' [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:49]
+WARNING: [VRFC 10-3091] actual bit length 16 differs from formal bit length 15 for port 'out_user_id' [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.ip_user_files/bd/design_1/sim/design_1.v:89]
 WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:152]
 WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:152]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:180]
-WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:180]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:184]
-WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:184]
+WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:181]
+WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:181]
+WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:185]
+WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:185]
 WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:189]
 WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:189]
+WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:194]
+WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:194]
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_apb_interface.v" Line 3. Module apb_slave doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_IP_storage.v" Line 1. Module FireWall_IP_storage_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_pkt_read.v" Line 1. Module eth_packet_read doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_pkt_fifo.v" Line 1. Module FireWall_pkt_fifo_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_apb_interface.v" Line 3. Module apb_slave doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_IP_storage.v" Line 1. Module FireWall_IP_storage_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_pkt_read.v" Line 1. Module eth_packet_read doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_RTL/FireWall_pkt_fifo.v" Line 1. Module FireWall_pkt_fifo_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_apb_interface.v" Line 3. Module apb_slave doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_IP_storage.v" Line 1. Module FireWall_IP_storage_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_pkt_read.v" Line 1. Module eth_packet_read doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_pkt_fifo.v" Line 1. Module FireWall_pkt_fifo_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_apb_interface.v" Line 3. Module apb_slave doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_IP_storage.v" Line 1. Module FireWall_IP_storage_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_pkt_read.v" Line 1. Module eth_packet_read doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sources_1/new/FireWall_pkt_fifo.v" Line 1. Module FireWall_pkt_fifo_default doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling package std.standard
@@ -58,9 +61,10 @@ Compiling module xil_defaultlib.design_1_axi_vip_0_0
 Compiling module xil_defaultlib.design_1
 Compiling module xil_defaultlib.design_1_wrapper
 WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:152]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:180]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:184]
+WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:181]
+WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:185]
 WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:189]
+WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:194]
 Compiling module xil_defaultlib.fire_wall_tb
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot fire_wall_tb_behav

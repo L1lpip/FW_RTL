@@ -45,7 +45,7 @@ module Fire_wall_top #(
 	output wire       out_valid,
 	output wire       out_last,
 	output wire [7:0] out_data,
-	output wire [15:0] out_user_id
+	output wire [14:0] out_user_id
 );
 
 
