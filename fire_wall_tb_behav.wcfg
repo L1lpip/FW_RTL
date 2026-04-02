@@ -15,13 +15,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9,344.167 ns"></ZoomStartTime>
-      <ZoomEndTime time="15,949.168 ns"></ZoomEndTime>
-      <Cursor1Time time="10,445.000 ns"></Cursor1Time>
+      <ZoomStartTime time="10,414.584 ns"></ZoomStartTime>
+      <ZoomEndTime time="10,777.085 ns"></ZoomEndTime>
+      <Cursor1Time time="10,475.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="218"></NameColumnWidth>
-      <ValueColumnWidth column_width="60"></ValueColumnWidth>
+      <NameColumnWidth column_width="208"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="5" />
    <wvobject type="group" fp_name="group22">
@@ -368,16 +368,16 @@
          <obj_property name="ObjectShortName">rd_ready</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/fifo_mem">
-         <obj_property name="ElementShortName">fifo_mem[0:2047][7:0]</obj_property>
-         <obj_property name="ObjectShortName">fifo_mem[0:2047][7:0]</obj_property>
+         <obj_property name="ElementShortName">fifo_mem[0:511][7:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_mem[0:511][7:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/wr_ptr">
-         <obj_property name="ElementShortName">wr_ptr[10:0]</obj_property>
-         <obj_property name="ObjectShortName">wr_ptr[10:0]</obj_property>
+         <obj_property name="ElementShortName">wr_ptr[8:0]</obj_property>
+         <obj_property name="ObjectShortName">wr_ptr[8:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/rd_ptr">
-         <obj_property name="ElementShortName">rd_ptr[10:0]</obj_property>
-         <obj_property name="ObjectShortName">rd_ptr[10:0]</obj_property>
+         <obj_property name="ElementShortName">rd_ptr[8:0]</obj_property>
+         <obj_property name="ObjectShortName">rd_ptr[8:0]</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/full">
          <obj_property name="ElementShortName">full</obj_property>
@@ -477,8 +477,8 @@
          <obj_property name="ObjectShortName">out_data[7:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/out_user_id">
-         <obj_property name="ElementShortName">out_user_id[15:0]</obj_property>
-         <obj_property name="ObjectShortName">out_user_id[15:0]</obj_property>
+         <obj_property name="ElementShortName">out_user_id[14:0]</obj_property>
+         <obj_property name="ObjectShortName">out_user_id[14:0]</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

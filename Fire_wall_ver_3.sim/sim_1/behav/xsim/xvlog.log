@@ -1,13 +1,10 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module fire_wall_tb
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:152]
-WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:152]
-WARNING: [VRFC 10-3824] variable 'pkt_len' must explicitly be declared as automatic or static [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:168]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:181]
-WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:181]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:185]
-WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:185]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:189]
-WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:189]
-WARNING: [VRFC 10-599] elements must both be 2-state or both be 4-state [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:194]
-WARNING: [VRFC 10-8762] arrays have different element types [/home/ducthanh/thanhntd/Fire_wall_ver_3/Fire_wall_ver_3.srcs/sim_1/new/fire_wall_tb.sv:194]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/fw3/thanhntd/FW_RTL/Fire_wall_ver_3.srcs/sources_1/new/FireWall_IP_storage.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FireWall_IP_storage
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/fw3/thanhntd/FW_RTL/Fire_wall_ver_3.srcs/sources_1/new/FireWall_apb_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/fw3/thanhntd/FW_RTL/Fire_wall_ver_3.srcs/sources_1/new/FireWall_pkt_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FireWall_pkt_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/fw3/thanhntd/FW_RTL/Fire_wall_ver_3.srcs/sources_1/new/FireWall_pkt_read.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module eth_packet_read
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/fw3/thanhntd/FW_RTL/Fire_wall_ver_3.srcs/sources_1/new/Firewall_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Fire_wall_top

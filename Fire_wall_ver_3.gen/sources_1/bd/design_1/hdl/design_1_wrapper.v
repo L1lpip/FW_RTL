@@ -2,8 +2,8 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Tue Mar 31 22:07:59 2026
-//Host        : DucThanh-Ubuntu running 64-bit Ubuntu 24.04.4 LTS
+//Date        : Thu Apr  2 09:23:15 2026
+//Host        : lab06 running 64-bit Ubuntu 20.04.6 LTS
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
 //Purpose     : IP block netlist
@@ -27,7 +27,7 @@ module design_1_wrapper
   input in_valid_0;
   output [7:0]out_data_0;
   output out_last_0;
-  output [15:0]out_user_id_0;
+  output [14:0]out_user_id_0;
   output out_valid_0;
 
   wire aclk_0;
@@ -37,7 +37,7 @@ module design_1_wrapper
   wire in_valid_0;
   wire [7:0]out_data_0;
   wire out_last_0;
-  wire [15:0]out_user_id_0;
+  wire [14:0]out_user_id_0;
   wire out_valid_0;
 
   design_1 design_1_i

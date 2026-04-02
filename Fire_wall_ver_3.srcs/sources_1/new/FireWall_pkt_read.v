@@ -1,37 +1,28 @@
 module eth_packet_read #(
-    parameter DEST_ADDR = 48'h3210_2003_0000  // Example destination MAC to filter on;
+    parameter DEST_ADDR = 48'h3210_2003_0000
 ) (
     input wire clk,
     input wire rst_n,
 
-    // Input stream
     input wire       in_valid,
     input wire       in_last,
     input wire [7:0] in_data,
 
-    // Output stream (payload only, headers stripped)
     output reg        out_valid,
     output reg        out_last,
     output reg [ 7:0] out_data,
     output reg        src_ready,
-    // Parsed header fields
     output reg [47:0] dst_mac,
     output reg [47:0] src_mac,
     output reg [15:0] ether_type,
-    output reg        header_valid  // pulses when header is fully parsed
+    output reg        header_valid
 );
 
-    // FSM states
-    localparam S_DST_MAC = 3'd0,  // bytes 0-5
-    S_SRC_MAC = 3'd1,  // bytes 6-11
-    S_ETYPE = 3'd2,  // bytes 12-13
-    S_PAYLOAD = 3'd3,  // bytes 14 to (last-4)
-    S_IDLE = 3'd4;
+    localparam S_DST_MAC = 3'd0, S_SRC_MAC = 3'd1, S_ETYPE = 3'd2, S_PAYLOAD = 3'd3, S_IDLE = 3'd4;
 
     reg [ 2:0] state;
-    reg [ 3:0] byte_cnt;  // counts bytes within each field
+    reg [ 3:0] byte_cnt;
 
-    // Internal registers for accumulating fields
     reg [47:0] dst_mac_r;
     reg [47:0] src_mac_r;
     reg [15:0] etype_r;
@@ -52,7 +43,6 @@ module eth_packet_read #(
             etype_r      <= 0;
             src_ready    <= 0;
         end else begin
-            // Defaults
             out_valid    <= 0;
             out_last     <= 0;
             header_valid <= 0;
@@ -60,10 +50,13 @@ module eth_packet_read #(
             if (in_valid) begin
                 case (state)
                     S_IDLE: begin
-                        // First byte of a new frame → start of Dest MAC
                         dst_mac_r <= {in_data, 40'd0};
                         byte_cnt  <= 1;
-                        state     <= S_DST_MAC;
+                        if (dst_mac_r[7:0] == DEST_ADDR[7:0]) begin
+                            state <= S_DST_MAC;
+                        end else begin
+                            state <= S_IDLE;
+                        end
                     end
 
                     S_DST_MAC: begin
@@ -73,15 +66,14 @@ module eth_packet_read #(
                             byte_cnt <= 0;
                             if ({dst_mac_r[47:8], in_data} == DEST_ADDR) begin
                                 dst_mac <= {dst_mac_r[47:8], in_data};
-                                state   <= S_SRC_MAC;  // dest MAC matches, continue
+                                state   <= S_SRC_MAC;
                             end else begin
-                                state <= S_IDLE;  // dest MAC mismatch, drop frame
+                                state <= S_IDLE;
                             end
                         end
                     end
 
                     S_SRC_MAC: begin
-                        
                         src_mac_r[(47-byte_cnt*8)-:8] <= in_data;
                         byte_cnt                      <= byte_cnt + 1;
                         if (byte_cnt == 5) begin
@@ -89,9 +81,8 @@ module eth_packet_read #(
                             src_ready <= 1;
                             byte_cnt  <= 0;
                             state     <= S_ETYPE;
-                        end else 
-                            src_ready <= 0;
-                        
+                        end else src_ready <= 0;
+
                     end
 
                     S_ETYPE: begin
@@ -113,13 +104,10 @@ module eth_packet_read #(
                             state <= S_IDLE;
                         end
                     end
-
                     default: state <= S_IDLE;
                 endcase
-
-                // Handle unexpected last in header
                 if (in_last && state != S_PAYLOAD) begin
-                    state <= S_IDLE;  // abort: runt frame
+                    state <= S_IDLE;
                 end
             end
         end

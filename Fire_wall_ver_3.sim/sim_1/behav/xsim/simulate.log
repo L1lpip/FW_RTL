@@ -1,0 +1,13 @@
+Time resolution is 1 ps
+XilinxAXIVIP: Found at Path: fire_wall_tb.UUT.design_1_i.axi_vip_0.inst
+
+Time: 1285 ns Started: 1285 ns Scope: /fire_wall_tb/UUT/design_1_i/axi_vip_0/inst/IF/PC File: /opt/tools/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2681
+Fatal: AXI4_ERRS_RDATA_X: When RVALID is high, a value of X on RDATA valid byte lanes is not permitted. Spec: section A3.2.2.
+Time: 1285 ns  Iteration: 2  Process: /fire_wall_tb/UUT/design_1_i/axi_vip_0/inst/IF/PC//fire_wall_tb/UUT/design_1_i/axi_vip_0/inst/IF/PC  Scope: fire_wall_tb.UUT.design_1_i.axi_vip_0.inst.IF.PC.arm_amba4_pc_msg_err  File: /opt/tools/Xilinx/Vivado/2023.2/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 1285 ns
+[TB] Sending MATCHING dst MAC frame (expect: PASS)
+[TB] Sending MATCHING dst MAC frame (expect: PASS)
+[TB] Sending MATCHING dst MAC frame (expect: PASS)
+[TB] Sending NON-MATCHING dst MAC frame (expect: DROP)
+[TB] Packet send test done.
+Executing Axi4 End Of Simulation checks

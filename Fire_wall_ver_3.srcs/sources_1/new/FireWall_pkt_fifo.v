@@ -1,6 +1,6 @@
 module FireWall_pkt_fifo #(
 	parameter DATA_WIDTH = 8,
-	parameter DEPTH      = 2048
+	parameter DEPTH      = 512
 )(
 	input wire clk,
 	input wire rst_n,

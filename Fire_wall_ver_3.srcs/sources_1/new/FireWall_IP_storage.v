@@ -1,7 +1,7 @@
 module FireWall_IP_storage #(
     parameter ADDR_WIDTH = 32,
     parameter DATA_WIDTH = 32,
-    parameter DEPTH      = 128  // 128 indices x 256 bits = 512 MAC entries
+    parameter DEPTH      = 128  
 ) (
     input wire clk,
     input wire rst_n,
@@ -20,14 +20,16 @@ module FireWall_IP_storage #(
     output reg         valid_IP,
     input  wire [47:0] src_ip,
     output reg  [14:0] User_ID,
+	output wire [DATA_WIDTH-1:0] reg_rdata,
 
     output wire full,
     output wire empty
 
 );
 
-    localparam MAC_LO_ADDR = 32'h0;
-    localparam MAC_HI_ID_VALID_ADDR = 32'h4;
+    localparam MAC_LO_ADDR = 8'h0;
+    localparam MAC_HI_ID_VALID_ADDR = 8'h4;
+	
 
     localparam PTR_WIDTH = $clog2(DEPTH);
     reg [      255:0] mac_storage    [0:DEPTH-1];
@@ -35,6 +37,7 @@ module FireWall_IP_storage #(
     reg [        1:0] sub_idx;
     reg [       31:0] mac_lo_buf;
     reg               mac_lo_written;
+	reg [DATA_WIDTH-1:0] reg_read_data;
 
     assign empty = (wr_ptr == 0) && (sub_idx == 0);
     assign full  = (wr_ptr[PTR_WIDTH] == 1'b1);
@@ -66,9 +69,20 @@ module FireWall_IP_storage #(
 
                 default: ;
             endcase
-        end
+		end else if (reg_rd && !empty) begin
+			case (reg_addr)
+				MAC_LO_ADDR: begin
+					reg_read_data <= mac_storage[wr_ptr[PTR_WIDTH-1:0]][sub_idx*64 +: 32];
+				end
+				MAC_HI_ID_VALID_ADDR: begin
+					reg_read_data <= mac_storage[wr_ptr[PTR_WIDTH-1:0]][sub_idx*64 + 32 +: 32];
+				end
+				default: ;
+			endcase
+		end
     end
 
+	assign reg_rdata = reg_read_data;
 
     reg [PTR_WIDTH-1:0] search_idx;
     reg                 searching;

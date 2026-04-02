@@ -109,6 +109,7 @@ module Fire_wall_top #(
         .reg_wr(w_reg_wr),
         .reg_rd(w_reg_rd),
         .reg_wdata(w_reg_wdata),
+		.reg_rdata(w_reg_rdata),
         .reg_pprot(w_reg_pprot),
         .reg_pstrb(w_reg_pstrb),
 		.src_ip_valid(w_src_ready),
@@ -117,7 +118,6 @@ module Fire_wall_top #(
         .User_ID(out_user_id)
     );
 
-    // Packet parsing module
     eth_packet_read pkt_reader (
         .clk(clk),
         .rst_n(rst_n),
@@ -145,7 +145,5 @@ module Fire_wall_top #(
         .rd_ready(valid_IP),
 		.rd_valid(out_valid)
     );
-
-    // Additional logic for matching against IP storage and forwarding/dropping packets would go here
 
 endmodule
