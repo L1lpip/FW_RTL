@@ -163,13 +163,14 @@ import design_1_axi_vip_0_0_pkg::*;
     // DEST_ADDR from eth_packet_read parameter: 48'h3210_2003_0000
     localparam [47:0] MY_MAC     = 48'h3210_2003_0000;  // must match DEST_ADDR
     localparam [47:0] SENDER_MAC = 48'hAABB_CCDD_EEFF;
-    localparam [47:0] SENDER_MAC_1 = 48'hEEEE_EEEE_EEEF;
+    localparam [47:0] SENDER_MAC_1 = 48'hEEEE_EEEE_EEEE;
     localparam [47:0] SENDER_MAC_2 = 48'hCCCC_CCCC_CCCC;
     localparam [15:0] ETYPE_IPV4 = 16'h0800;
 
     initial begin
         bit [7:0] pkt_payload[];
         bit [7:0] pkt_payload_1[];
+		bit [7:0] pkt_payload_2[];
 		integer pkt_len = 64;
         // Wait for reset to be released
         wait (resetn == 1'b1);
@@ -179,9 +180,11 @@ import design_1_axi_vip_0_0_pkg::*;
         // --- Frame 1: dst MAC matches → should pass through firewall ---
         pkt_payload = new[pkt_len];
         pkt_payload_1 = new[pkt_len];
+        pkt_payload_2 = new[pkt_len];
         foreach (pkt_payload[i]) pkt_payload[i] = 8'hA0 + i;  // dummy payload bytes
         foreach (pkt_payload[i]) pkt_payload_1[i] = 8'hB0 + i; 
-        
+        foreach (pkt_payload[i]) pkt_payload_2[i] = 8'hC0 + i; 
+
         $display("[TB] Sending MATCHING dst MAC frame (expect: PASS)");
         send_eth_packet(MY_MAC, SENDER_MAC, ETYPE_IPV4, pkt_payload, pkt_len);
         repeat (5) @(posedge clk);
@@ -191,7 +194,7 @@ import design_1_axi_vip_0_0_pkg::*;
         repeat (5) @(posedge clk);
 
         $display("[TB] Sending MATCHING dst MAC frame (expect: PASS)");
-        send_eth_packet(MY_MAC, SENDER_MAC_2, ETYPE_IPV4, pkt_payload_1, pkt_len);
+        send_eth_packet(MY_MAC, SENDER_MAC_2, ETYPE_IPV4, pkt_payload_2, pkt_len);
         repeat (5) @(posedge clk);
 
         // --- Frame 2: dst MAC wrong → should be dropped ---

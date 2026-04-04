@@ -22,7 +22,7 @@ module FireWall_pkt_fifo #(
 	wire full;
 	wire empty;
 
-	assign full  = (wr_ptr == 2047) ? 1'b1 : 1'b0;
+	assign full  = (wr_ptr == DEPTH - 1) ? 1'b1 : 1'b0;
 	assign empty = (wr_ptr == rd_ptr) ? 1'b1 : 1'b0;
 
 	always @(posedge clk or negedge rst_n) begin
