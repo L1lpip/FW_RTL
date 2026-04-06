@@ -67,10 +67,9 @@ module Fire_wall_top #(
     wire                  w_header_valid;
 
     wire                  valid_IP;
-	wire w_read_valid;
+	wire w_read_ready;
 	wire w_src_ready;
-
-	
+	wire w_read_valid;
 
     apb_slave #(
         .ADDR_WIDTH(ADDR_WIDTH),
@@ -114,12 +113,13 @@ module Fire_wall_top #(
 		.reg_rdata(w_reg_rdata),
         .reg_pprot(w_reg_pprot),
         .reg_pstrb(w_reg_pstrb),
+		.read_valid(w_read_valid),
 		.src_ip_valid(w_src_ready),
         .valid_IP(valid_IP),
         .src_ip(w_src_mac),
         .User_ID(out_user_id),
 		.rise_valid(out_valid), 
-		.rd_en(w_read_valid)      
+		.read_ready(w_read_ready)      
     );
 
     eth_packet_read pkt_reader (
@@ -146,7 +146,7 @@ module Fire_wall_top #(
         .wr_last(w_out_last),
         .rd_data(out_data),
         .rd_last(out_last),
-        .rd_ready(valid_IP),
+        .rd_ready(w_read_ready),
 		.rd_valid(w_read_valid)
     );
 
