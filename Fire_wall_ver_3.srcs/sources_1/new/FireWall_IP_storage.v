@@ -22,8 +22,8 @@ module FireWall_IP_storage #(
     input  wire [          47:0] src_ip,
     output reg  [          14:0] User_ID,
     output wire [DATA_WIDTH-1:0] reg_rdata,
-    output reg                   rise_valid,
-    output reg                   read_ready,
+    output wire                  rise_valid,
+    output wire                  read_ready,
 
     output wire full,
     output wire empty
@@ -95,7 +95,9 @@ module FireWall_IP_storage #(
         end
     end
 
-    assign reg_rdata = reg_read_data;
+    assign reg_rdata  = reg_read_data;
+    assign rise_valid = search_done & valid_IP & read_valid;
+    assign read_ready = search_done & read_valid;
 
     reg     [PTR_WIDTH-1:0] search_idx;
     reg                     searching;
@@ -115,26 +117,7 @@ module FireWall_IP_storage #(
             search_idx     <= 0;
             src_ip_valid_r <= 0;
             search_done    <= 0;
-            rise_valid     <= 0;
-            read_ready     <= 0;
         end else begin
-            case ({
-                search_done, valid_IP, read_valid
-            })
-                3'b111: begin
-                    read_ready <= 1'b1;
-                    rise_valid <= 1'b1;
-                end
-                3'b101: begin
-                    read_ready <= 1'b1;
-                    rise_valid <= 1'b0;
-                end
-                default: begin
-                    read_ready <= 1'b0;
-                    rise_valid <= 1'b0;
-                end
-            endcase
-
             src_ip_valid_r <= src_ip_valid;
 
             if (src_ip_valid_rise) begin

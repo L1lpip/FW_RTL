@@ -171,7 +171,7 @@ import design_1_axi_vip_0_0_pkg::*;
         bit [7:0] pkt_payload[];
         bit [7:0] pkt_payload_1[];
 		bit [7:0] pkt_payload_2[];
-		integer pkt_len = 64;
+		integer pkt_len = 1500;
         // Wait for reset to be released
         wait (resetn == 1'b1);
 		#10000;
@@ -185,20 +185,22 @@ import design_1_axi_vip_0_0_pkg::*;
         foreach (pkt_payload[i]) pkt_payload_1[i] = 8'hB0 + i; 
         foreach (pkt_payload[i]) pkt_payload_2[i] = 8'hC0 + i; 
 
-        $display("[TB] Sending MATCHING dst MAC frame (expect: PASS)");
+        send_eth_packet(48'hDEAD_BEEF_0000, SENDER_MAC, ETYPE_IPV4, pkt_payload, pkt_len);
+        repeat (5) @(posedge clk);
+
         send_eth_packet(MY_MAC, SENDER_MAC, ETYPE_IPV4, pkt_payload, pkt_len);
         repeat (5) @(posedge clk);
         
-        $display("[TB] Sending MATCHING dst MAC frame (expect: PASS)");
+
         send_eth_packet(MY_MAC, SENDER_MAC_1, ETYPE_IPV4, pkt_payload_1, pkt_len);
         repeat (5) @(posedge clk);
 
-        $display("[TB] Sending MATCHING dst MAC frame (expect: PASS)");
+
         send_eth_packet(MY_MAC, SENDER_MAC_2, ETYPE_IPV4, pkt_payload_2, pkt_len);
         repeat (5) @(posedge clk);
 
         // --- Frame 2: dst MAC wrong → should be dropped ---
-        $display("[TB] Sending NON-MATCHING dst MAC frame (expect: DROP)");
+ 
         send_eth_packet(48'hDEAD_BEEF_0000, SENDER_MAC, ETYPE_IPV4, pkt_payload, pkt_len);
         repeat (5) @(posedge clk);
 

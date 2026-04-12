@@ -15,18 +15,27 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="10,414.584 ns"></ZoomStartTime>
-      <ZoomEndTime time="10,777.085 ns"></ZoomEndTime>
-      <Cursor1Time time="10,475.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="1,333.000001 us"></ZoomEndTime>
+      <Cursor1Time time="71.075000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="208"></NameColumnWidth>
-      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+      <NameColumnWidth column_width="206"></NameColumnWidth>
+      <ValueColumnWidth column_width="60"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="6" />
+   <wave_markers>
+      <marker label="" time="11965000" />
+      <marker label="" time="11315000" />
+      <marker label="" time="11335000" />
+      <marker label="" time="11975000" />
+      <marker label="" time="11305000" />
+      <marker label="" time="11954900" />
+   </wave_markers>
    <wvobject type="group" fp_name="group22">
       <obj_property name="label">Storage</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/clk">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
@@ -58,6 +67,28 @@
       <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/reg_rd">
          <obj_property name="ElementShortName">reg_rd</obj_property>
          <obj_property name="ObjectShortName">reg_rd</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/read_valid">
+         <obj_property name="ElementShortName">read_valid</obj_property>
+         <obj_property name="ObjectShortName">read_valid</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/search_done">
+         <obj_property name="ElementShortName">search_done</obj_property>
+         <obj_property name="ObjectShortName">search_done</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/valid_IP">
+         <obj_property name="ElementShortName">valid_IP</obj_property>
+         <obj_property name="ObjectShortName">valid_IP</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/rise_valid">
+         <obj_property name="ElementShortName">rise_valid</obj_property>
+         <obj_property name="ObjectShortName">rise_valid</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/reg_wdata">
          <obj_property name="ElementShortName">reg_wdata[31:0]</obj_property>
@@ -128,12 +159,12 @@
          <obj_property name="ObjectShortName">DEPTH[31:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/MAC_LO_ADDR">
-         <obj_property name="ElementShortName">MAC_LO_ADDR[31:0]</obj_property>
-         <obj_property name="ObjectShortName">MAC_LO_ADDR[31:0]</obj_property>
+         <obj_property name="ElementShortName">MAC_LO_ADDR[7:0]</obj_property>
+         <obj_property name="ObjectShortName">MAC_LO_ADDR[7:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/MAC_HI_ID_VALID_ADDR">
-         <obj_property name="ElementShortName">MAC_HI_ID_VALID_ADDR[31:0]</obj_property>
-         <obj_property name="ObjectShortName">MAC_HI_ID_VALID_ADDR[31:0]</obj_property>
+         <obj_property name="ElementShortName">MAC_HI_ID_VALID_ADDR[7:0]</obj_property>
+         <obj_property name="ObjectShortName">MAC_HI_ID_VALID_ADDR[7:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/ip_storage/PTR_WIDTH">
          <obj_property name="ElementShortName">PTR_WIDTH[31:0]</obj_property>
@@ -331,6 +362,7 @@
    <wvobject type="group" fp_name="group163">
       <obj_property name="label">PKT_FIFO</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/clk">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
@@ -368,16 +400,16 @@
          <obj_property name="ObjectShortName">rd_ready</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/fifo_mem">
-         <obj_property name="ElementShortName">fifo_mem[0:511][7:0]</obj_property>
-         <obj_property name="ObjectShortName">fifo_mem[0:511][7:0]</obj_property>
+         <obj_property name="ElementShortName">fifo_mem[0:511][8:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_mem[0:511][8:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/wr_ptr">
-         <obj_property name="ElementShortName">wr_ptr[8:0]</obj_property>
-         <obj_property name="ObjectShortName">wr_ptr[8:0]</obj_property>
+         <obj_property name="ElementShortName">wr_ptr[9:0]</obj_property>
+         <obj_property name="ObjectShortName">wr_ptr[9:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/rd_ptr">
-         <obj_property name="ElementShortName">rd_ptr[8:0]</obj_property>
-         <obj_property name="ObjectShortName">rd_ptr[8:0]</obj_property>
+         <obj_property name="ElementShortName">rd_ptr[9:0]</obj_property>
+         <obj_property name="ObjectShortName">rd_ptr[9:0]</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/pkt_fifo/full">
          <obj_property name="ElementShortName">full</obj_property>
@@ -475,10 +507,49 @@
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/out_data">
          <obj_property name="ElementShortName">out_data[7:0]</obj_property>
          <obj_property name="ObjectShortName">out_data[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/out_user_id">
          <obj_property name="ElementShortName">out_user_id[14:0]</obj_property>
          <obj_property name="ObjectShortName">out_user_id[14:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group235">
+      <obj_property name="label">byte_cnt</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/rst_n">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/in_valid">
+         <obj_property name="ElementShortName">in_valid</obj_property>
+         <obj_property name="ObjectShortName">in_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/in_last">
+         <obj_property name="ElementShortName">in_last</obj_property>
+         <obj_property name="ObjectShortName">in_last</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/out_valid">
+         <obj_property name="ElementShortName">out_valid</obj_property>
+         <obj_property name="ObjectShortName">out_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/out_last">
+         <obj_property name="ElementShortName">out_last</obj_property>
+         <obj_property name="ObjectShortName">out_last</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/byte_cnt">
+         <obj_property name="ElementShortName">byte_cnt[31:0]</obj_property>
+         <obj_property name="ObjectShortName">byte_cnt[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/fire_wall_tb/UUT/design_1_i/Fire_wall_top_0/inst/byte_cnt/DATA_WIDTH">
+         <obj_property name="ElementShortName">DATA_WIDTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DATA_WIDTH[31:0]</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

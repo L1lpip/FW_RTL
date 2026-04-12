@@ -150,4 +150,28 @@ module Fire_wall_top #(
 		.rd_valid(w_read_valid)
     );
 
+    wire [31:0] byte_cnt;
+    wire w_byte_cnt_out_valid;
+    wire w_byte_cnt_out_last;
+
+    FireWall_byte_cnt FW_byte_cnt (
+        .clk(clk),
+        .rst_n(rst_n),
+        .in_valid(out_valid),
+        .in_last(out_last),
+        .byte_cnt(byte_cnt),
+        .out_valid(w_byte_cnt_out_valid),
+        .out_last(w_byte_cnt_out_last)
+    );
+
+    rams_sp_rf_rst BR_store_byte_cnt (
+        .clk(clk),
+        .en(w_byte_cnt_out_valid),
+        .we(w_byte_cnt_out_valid & w_byte_cnt_out_last),
+        .rst(rst_n),
+        .addr(out_user_id),
+        .di(byte_cnt),
+        .dout()
+    );
+
 endmodule

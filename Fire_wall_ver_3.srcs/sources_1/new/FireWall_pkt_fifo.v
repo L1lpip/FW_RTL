@@ -53,6 +53,7 @@ module FireWall_pkt_fifo #(
 					rd_valid <= 1;
 				end else begin
 					rd_valid <= 0;
+					rd_last  <= 0;
 				end
 			end else if (!rd_valid && !empty) begin
 				{rd_last, rd_data} <= fifo_mem[rd_ptr[PTR_WIDTH-1:0]];
