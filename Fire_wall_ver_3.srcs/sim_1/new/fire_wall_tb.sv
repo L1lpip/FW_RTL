@@ -70,7 +70,8 @@ import design_1_axi_vip_0_0_pkg::*;
 		mst_agent.AXI4LITE_READ_BURST(8'h00, mtestProtectionType, read_data, mtestRresp);
 		mst_agent.AXI4LITE_READ_BURST(8'h04, mtestProtectionType, read_data, mtestRresp);
 
-		
+		mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hAABBCCDD, mtestRresp);  //MAC_LO
+        mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hEEFF1110, mtestRresp);  //MAC_HI
 
         mst_agent.AXI4LITE_WRITE_BURST(8'h00, mtestProtectionType, 32'hAAAAAAAA, mtestRresp);  //MAC_LO
         mst_agent.AXI4LITE_WRITE_BURST(8'h04, mtestProtectionType, 32'hAAAAAAA0, mtestRresp);  //MAC_HI

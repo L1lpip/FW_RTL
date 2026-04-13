@@ -45,7 +45,7 @@ module Fire_wall_top #(
 	output wire       out_valid,
 	output wire       out_last,
 	output wire [7:0] out_data,
-	output wire [14:0] out_user_id
+	output wire [8:0] out_user_id
 );
 
 
@@ -164,14 +164,14 @@ module Fire_wall_top #(
         .out_last(w_byte_cnt_out_last)
     );
 
-    rams_sp_rf_rst BR_store_byte_cnt (
-        .clk(clk),
-        .en(w_byte_cnt_out_valid),
-        .we(w_byte_cnt_out_valid & w_byte_cnt_out_last),
-        .rst(rst_n),
-        .addr(out_user_id),
-        .di(byte_cnt),
-        .dout()
-    );
+    bram pkt_byte_cnt_bram (
+		.clk(clk),
+		.addr(out_user_id),
+		.cs_n(0), 
+		.wr_n(w_byte_cnt_out_valid),              
+		.rd_n(0),              
+		.bram_data_in(byte_cnt),
+		.bram_data_out()
+	);
 
 endmodule

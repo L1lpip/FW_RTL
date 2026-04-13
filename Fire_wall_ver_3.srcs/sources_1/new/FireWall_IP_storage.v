@@ -20,7 +20,7 @@ module FireWall_IP_storage #(
     input  wire                  src_ip_valid,
     output reg                   valid_IP,
     input  wire [          47:0] src_ip,
-    output reg  [          14:0] User_ID,
+    output reg  [           8:0] User_ID,
     output wire [DATA_WIDTH-1:0] reg_rdata,
     output wire                  rise_valid,
     output wire                  read_ready,
@@ -131,7 +131,7 @@ module FireWall_IP_storage #(
                     entry = mac_storage[search_idx][j*64+:64];
                     if (!found && (entry[63:16] == src_ip) && entry[0]) begin
                         valid_IP    <= 1'b1;
-                        User_ID     <= entry[15:1];
+                        User_ID     <= entry[9:1];
                         searching   <= 1'b0;
                         search_done <= 1'b1;
                         found = 1'b1;

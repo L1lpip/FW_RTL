@@ -1,26 +1,23 @@
-module rams_sp_rf_rst (clk, en, we, rst, addr, di, dout);
-input clk;
-input en;
-input we;
-input rst;
-input [9:0] addr;
-input [15:0] di;
-output [15:0] dout;
+module bram (
+    input clk, 
+    input [BRAM_ADDR_WIDTH-1:0] addr, 
+    input cs_n,
+    input wr_n, 
+    input rd_n,
+    input [BRAM_DATA_WIDTH-1:0] bram_data_in,
+    output reg [BRAM_DATA_WIDTH-1:0] bram_data_out
+);
 
-reg [15:0] ram [1023:0];
-reg [15:0] dout;
+    parameter BRAM_ADDR_WIDTH = 9;
+    parameter BRAM_DATA_WIDTH = 32;
 
-always @(posedge clk)
-    begin
-    if (en) 
-        begin
-        if (we) 
-            ram[addr] <= di;
-        if (rst) 
-            dout <= 0;
-        else
-            dout <= ram[addr];
-    end
-end
+    reg [BRAM_DATA_WIDTH-1:0] mem [(1<<BRAM_ADDR_WIDTH)-1:0];
 
-endmodule
+    always @(posedge clk)
+        if (cs_n == 1'b0) begin
+            begin
+                if (wr_n == 1'b1) mem[(addr)] <= bram_data_in;
+                if (rd_n == 1'b1) bram_data_out <= mem[addr];
+            end
+        end
+    endmodule
