@@ -6,8 +6,6 @@ module FireWall_byte_cnt #(
 
     input wire       in_valid,
     input wire       in_last,
-    // input wire [8:0] user_id,
-    // input wire       valid_IP,
 
     output wire        out_valid,
     output wire        out_last,

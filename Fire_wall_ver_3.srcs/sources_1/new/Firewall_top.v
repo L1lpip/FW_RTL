@@ -169,8 +169,35 @@ module Fire_wall_top #(
 		.addr(out_user_id),
 		.cs_n(0), 
 		.wr_n(w_byte_cnt_out_valid),              
-		.rd_n(0),              
+		.rd_n(w_o_rd_to_bram),              
 		.bram_data_in(byte_cnt),
+		.bram_data_out(w_byte_cnt_bram)
+	);
+
+	wire [31:0] w_byte_cnt_bram;
+	wire w_o_rd_to_bram;
+	wire w_o_wr_to_bram;
+	wire [8:0] w_o_user_id;
+	wire [31:0] w_data_rate;
+
+	FireWall_data_rate data_rate_calc (
+		.clk(clk),
+		.rst_n(rst_n),
+		.i_byte_cnt(w_byte_cnt_bram),
+		.i_user_id(out_user_id),
+		.o_rd_to_bram(w_o_rd_to_bram),
+		.o_user_id(w_o_user_id),
+		.data_rate(w_data_rate), 
+		.o_wr_to_bram(w_o_wr_to_bram)
+	);
+
+	bram data_rate_bram (
+		.clk(clk),
+		.addr(w_o_user_id),
+		.cs_n(0), 
+		.wr_n(w_o_wr_to_bram),              
+		.rd_n(0),             
+		.bram_data_in(w_data_rate),
 		.bram_data_out()
 	);
 
