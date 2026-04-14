@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 
 module FireWall_data_rate #(
-    parameter CLK_FREQ   = 100_000_000, 
-    parameter TIMER_WIDTH = 21         
+    parameter CLK_FREQ   = 100_000
 )(
     input wire clk,
     input wire rst_n,
     input wire [8:0]  i_user_id,
     input wire [31:0] i_byte_cnt,
+    input wire [31:0] i_total_byte_cnt,
 
     output wire [31:0] data_rate,
     output wire        o_rd_to_bram,
@@ -15,7 +15,7 @@ module FireWall_data_rate #(
     output wire        o_wr_to_bram
 );
 
-    reg [TIMER_WIDTH-1:0] r_timer;
+    reg [$clog2(CLK_FREQ)-1:0] r_timer;
     reg                   r_tick;     
 
     always @(posedge clk or negedge rst_n) begin
@@ -68,7 +68,7 @@ module FireWall_data_rate #(
                 end
 
                 LATCH: begin
-                    r_data_rate  <= i_byte_cnt * 8 * 8;  
+                    r_data_rate  <= i_byte_cnt / i_total_byte_cnt;  
                     r_wr_to_bram <= 1;               
                     r_state      <= IDLE;
                 end

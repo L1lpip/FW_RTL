@@ -1,8 +1,7 @@
 `timescale 1ns / 1ps
 
 module FireWall_total_byte_cnt #(
-    parameter CLK_FREQ   = 100_000_000, 
-    parameter TIMER_WIDTH = 27         
+    parameter CLK_FREQ   = 100_000     
 )(
     input  wire        clk,
     input  wire        rst_n,
@@ -13,8 +12,8 @@ module FireWall_total_byte_cnt #(
     output wire [31:0] total_byte_cnt   
 );
 
-    reg [TIMER_WIDTH-1:0] r_timer;
-    reg                   r_tick;   // 1-cycle pulse at end of each window
+    reg [$clog2(CLK_FREQ)-1:0] r_timer;
+    reg                       r_tick;   // 1-cycle pulse at end of each window
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin

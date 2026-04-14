@@ -185,11 +185,23 @@ module Fire_wall_top #(
 		.rst_n(rst_n),
 		.i_byte_cnt(w_byte_cnt_bram),
 		.i_user_id(out_user_id),
+        .i_total_byte_cnt(w_total_byte_cnt),
 		.o_rd_to_bram(w_o_rd_to_bram),
 		.o_user_id(w_o_user_id),
 		.data_rate(w_data_rate), 
 		.o_wr_to_bram(w_o_wr_to_bram)
 	);
+
+    wire [31:0] w_total_byte_cnt;
+    wire total_byte_cnt_valid;
+
+    FireWall_total_byte_cnt total_byte_cnt (
+        .clk(clk),
+        .rst_n(rst_n),
+        .in_valid(w_read_valid),
+        .out_valid(total_byte_cnt_valid),
+        .total_byte_cnt(w_total_byte_cnt)
+    );
 
 	bram data_rate_bram (
 		.clk(clk),
