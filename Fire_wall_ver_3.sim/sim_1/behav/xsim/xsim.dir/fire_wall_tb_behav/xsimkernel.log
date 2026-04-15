@@ -1,4 +1,4 @@
-Running: xsim.dir/fire_wall_tb_behav/xsimk -simmode gui -wdb fire_wall_tb_behav.wdb -simrunnum 0 -socket 55903
+Running: xsim.dir/fire_wall_tb_behav/xsimk -simmode gui -wdb fire_wall_tb_behav.wdb -simrunnum 0 -socket 48045
 Design successfully loaded
-Design Loading Memory Usage: 27512 KB (Peak: 27512 KB)
-Design Loading CPU Usage: 40 ms
+Design Loading Memory Usage: 27880 KB (Peak: 27880 KB)
+Design Loading CPU Usage: 0 ms
